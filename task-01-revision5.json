@@ -1,0 +1,61 @@
+{
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:804425018582:task-definition/task-01:5",
+    "containerDefinitions": [
+        {
+            "name": "multi-stage-app",
+            "image": "public.ecr.aws/z1y1w9c8/multi-stage-app:latest",
+            "cpu": 0,
+            "portMappings": [
+                {
+                    "name": "httpd",
+                    "containerPort": 80,
+                    "hostPort": 80,
+                    "protocol": "tcp",
+                    "appProtocol": "http"
+                }
+            ],
+            "essential": true,
+            "environment": [],
+            "environmentFiles": [],
+            "mountPoints": [],
+            "volumesFrom": [],
+            "ulimits": [],
+            "systemControls": []
+        }
+    ],
+    "family": "task-01",
+    "taskRoleArn": "arn:aws:iam::804425018582:role/ecsTaskExecutionRole",
+    "executionRoleArn": "arn:aws:iam::804425018582:role/ecsTaskExecutionRole",
+    "networkMode": "awsvpc",
+    "revision": 5,
+    "volumes": [],
+    "status": "ACTIVE",
+    "requiresAttributes": [
+        {
+            "name": "com.amazonaws.ecs.capability.task-iam-role"
+        },
+        {
+            "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
+        },
+        {
+            "name": "ecs.capability.task-eni"
+        }
+    ],
+    "placementConstraints": [],
+    "compatibilities": [
+        "EC2",
+        "FARGATE"
+    ],
+    "requiresCompatibilities": [
+        "EC2"
+    ],
+    "cpu": "1024",
+    "memory": "3072",
+    "runtimePlatform": {
+        "cpuArchitecture": "X86_64",
+        "operatingSystemFamily": "LINUX"
+    },
+    "registeredAt": "2024-09-02T18:05:59.206Z",
+    "registeredBy": "arn:aws:iam::804425018582:user/dev-01",
+    "tags": []
+}
