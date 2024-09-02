@@ -1,5 +1,5 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:804425018582:task-definition/task-01:5",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:804425018582:task-definition/task-01:7",
     "containerDefinitions": [
         {
             "name": "multi-stage-app",
@@ -24,16 +24,12 @@
         }
     ],
     "family": "task-01",
-    "taskRoleArn": "arn:aws:iam::804425018582:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::804425018582:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 5,
+    "revision": 7,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
-        {
-            "name": "com.amazonaws.ecs.capability.task-iam-role"
-        },
         {
             "name": "com.amazonaws.ecs.capability.docker-remote-api.1.18"
         },
@@ -55,7 +51,7 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-09-02T18:05:59.206Z",
+    "registeredAt": "2024-09-02T18:47:39.455Z",
     "registeredBy": "arn:aws:iam::804425018582:user/dev-01",
     "tags": []
 }
