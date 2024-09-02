@@ -18,13 +18,13 @@ jobs:
       env:
         DOCKER_USERNAME: ${{secrets.DOCKER_USERNAME}}
         DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD}}
-      run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+      run: sudo docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
     - name: Build the Docker image
-      run: docker build -t multi-stage .
+      run: sudo docker build -t multi-stage .
     - name: docker run container 
       run: sudo docker run -d --name multi-container -p 8080:8080 multi-stage
     - name: docker container information 
       run: docker container ps  
     - name: Run tests inside the container
-      run: docker exec multi-container curl -I https://google.com
+      run: sudo docker exec multi-container curl -I https://google.com
 
