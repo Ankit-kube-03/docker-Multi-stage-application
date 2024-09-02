@@ -26,5 +26,5 @@ jobs:
     - name: docker container information 
       run: docker container ps  
     - name: Run tests inside the container
-      run: docker exec multi-container ping google.com -c4
+      run: docker exec multi-container curl -I https://google.com
 
