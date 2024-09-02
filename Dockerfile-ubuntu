@@ -1,5 +1,6 @@
 FROM ubuntu
 RUN apt update -y &&\
+    apt install -y iputils-ping -y &&\
     apt install default-jdk -y &&\
     java -version
 RUN apt install maven -y &&\
