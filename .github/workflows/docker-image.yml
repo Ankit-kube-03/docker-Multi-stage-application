@@ -24,7 +24,7 @@ jobs:
     - name: docker run container 
       run: sudo docker run -d --name multi-container -p 8080:8080 multi-stage
     - name: docker container information 
-      run: docker container ps  
+      run: sudo docker container ps  
     - name: Run tests inside the container
       run: sudo docker exec multi-container curl -I https://google.com
 
