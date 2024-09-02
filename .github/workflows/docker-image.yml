@@ -25,3 +25,5 @@ jobs:
       run: docker run -d -p 8080:8080 multi-stage 
     - name: docker container information 
       run: docker container ps  
+    - name: Run tests inside the container
+      run: docker exec multi-stage npm test
