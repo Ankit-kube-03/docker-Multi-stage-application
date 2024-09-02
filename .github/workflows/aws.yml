@@ -84,14 +84,14 @@ jobs:
       id: task-def
       uses: aws-actions/amazon-ecs-render-task-definition@v1
       with:
-        task-definition: task-01-revision.json
+        task-definition: task-01-revision3.json
         container-name: multi-stage-app
         image: 804425018582.dkr.ecr.us-east-1.amazonaws.com/my-app:latest
 
     - name: Deploy Amazon ECS task definition
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
-        task-definition: task-01-revision.json
+        task-definition: task-01-revision3.json
         service: serve
         cluster: multi-cluster
         wait-for-service-stability: true
