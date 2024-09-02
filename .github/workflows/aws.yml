@@ -82,14 +82,14 @@ jobs:
 
     - name: Fill in the new image ID in the Amazon ECS task definition
       id: task-def
-      uses: aws-actions/amazon-ecs-render-task-definition@v1
+      uses: aws-actions/amazon-ecs-render-task-definition@v3
       with:
         task-definition: task-01-revision5.json
         container-name: multi-stage-app
         image: 804425018582.dkr.ecr.us-east-1.amazonaws.com/my-app:latest
 
     - name: Deploy Amazon ECS task definition
-      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v3
       with:
         task-definition: task-01-revision5.json
         service: serve
