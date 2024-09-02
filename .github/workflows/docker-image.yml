@@ -22,8 +22,8 @@ jobs:
     - name: Build the Docker image
       run: docker build -t multi-stage .
     - name: docker run container 
-      run: docker run -d -p 8080:8080 multi-stage 
+      run: sudo docker run -d --name multi-container -p 8080:8080 multi-stage
     - name: docker container information 
       run: docker container ps  
     - name: Run tests inside the container
-      run: docker exec keen_taussig npm test
+      run: docker exec multi-container npm test
