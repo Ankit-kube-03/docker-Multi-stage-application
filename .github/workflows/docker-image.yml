@@ -26,4 +26,4 @@ jobs:
     - name: docker container information 
       run: docker container ps  
     - name: Run tests inside the container
-      run: docker exec multi-stage npm test
+      run: docker exec laughing_archimedes npm test
