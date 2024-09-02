@@ -86,7 +86,7 @@ jobs:
       with:
         task-definition: task-01-revision.json
         container-name: multi-stage-app
-        image: ${{ steps.build-image.outputs.image }}
+        image: 804425018582.dkr.ecr.us-east-1.amazonaws.com/my-app:latest
 
     - name: Deploy Amazon ECS task definition
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
