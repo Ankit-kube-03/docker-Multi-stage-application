@@ -1,5 +1,5 @@
 {
-    "taskDefinitionArn": "arn:aws:ecs:us-east-1:804425018582:task-definition/task-01:10",
+    "taskDefinitionArn": "arn:aws:ecs:us-east-1:804425018582:task-definition/task-01:22",
     "containerDefinitions": [
         {
             "name": "multi-stage-app",
@@ -16,10 +16,8 @@
             ],
             "essential": true,
             "environment": [],
-            "environmentFiles": [],
             "mountPoints": [],
             "volumesFrom": [],
-            "ulimits": [],
             "systemControls": []
         }
     ],
@@ -27,7 +25,7 @@
     "taskRoleArn": "arn:aws:iam::804425018582:role/ecsTaskExecutionRole",
     "executionRoleArn": "arn:aws:iam::804425018582:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
-    "revision": 10,
+    "revision": 22,
     "volumes": [],
     "status": "ACTIVE",
     "requiresAttributes": [
@@ -55,7 +53,7 @@
         "cpuArchitecture": "X86_64",
         "operatingSystemFamily": "LINUX"
     },
-    "registeredAt": "2024-09-02T19:24:59.726Z",
+    "registeredAt": "2024-09-03T05:42:45.601Z",
     "registeredBy": "arn:aws:iam::804425018582:user/dev-01",
     "tags": []
 }
