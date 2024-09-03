@@ -71,3 +71,29 @@ jobs:
         service: serve
         cluster: multi-cluster
         wait-for-service-stability: true
+
+
+  rollback:
+    needs: deploy
+    if: failure()
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Rollback to Previous Task Definition
+      run: |
+        PREVIOUS_TASK_DEF=$(aws ecs describe-services --cluster production-cluster --services web-service | jq -r '.services[0].taskDefinition')
+        aws ecs update-service --cluster production-cluster --service web-service --task-definition $PREVIOUS_TASK_DEF
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+    - name: Wait for Rollback to Complete
+      run: |
+        aws ecs wait services-stable --cluster production-cluster --services web-service
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        AWS_REGION: ${{ secrets.AWS_REGION }}
+
+
+        
