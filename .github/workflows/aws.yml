@@ -81,7 +81,8 @@ jobs:
     steps:
     - name: Rollback to Previous Task Definition
       run: |
-        PREVIOUS_TASK_DEF=$(arn:aws:ecs:us-east-1:804425018582:task-definition/task-01:22)
+        PREVIOUS_TASK_DEF="arn:aws:ecs:***:804425018582:task-definition/task-01:22"
+
         echo $PREVIOUS_TASK_DEF
         aws ecs update-service --cluster multi-cluster --service serve --task-definition $PREVIOUS_TASK_DEF 
       env:
