@@ -65,7 +65,7 @@ jobs:
         image: 804425018582.dkr.ecr.us-east-1.amazonaws.com/my-app:latest
 
     - name: Deploy Amazon ECS task definition
-      uses: aws-actions/amazon-ecs-deploy-task-definition@v5
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
         task-definition: task-01-revision.json
         service: serve
@@ -81,8 +81,8 @@ jobs:
     steps:
     - name: Rollback to Previous Task Definition
       run: |
-        PREVIOUS_TASK_DEF=$(aws ecs describe-services --cluster multi-stage-app --services serve| jq -r '.services[0].taskDefinition/task-01:20')
-        aws ecs update-service --cluster multi-stage-app --service serve --task-definition $PREVIOUS_TASK_DEF --region your-region
+        PREVIOUS_TASK_DEF=$(aws ecs describe-services --cluster multi-cluster --services serve task-definition/task-01:20)
+        aws ecs update-service --cluster multi-cluster --service serve --task-definition $PREVIOUS_TASK_DEF 
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
