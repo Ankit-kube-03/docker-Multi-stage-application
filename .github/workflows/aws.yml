@@ -81,15 +81,15 @@ jobs:
     steps:
     - name: Rollback to Previous Task Definition
       run: |
-        PREVIOUS_TASK_DEF=$(aws ecs describe-services --cluster production-cluster --services web-service | jq -r '.services[0].taskDefinition')
-        aws ecs update-service --cluster production-cluster --service web-service --task-definition $PREVIOUS_TASK_DEF
+        PREVIOUS_TASK_DEF=$(aws ecs describe-services --cluster multi-stage-app --services serve | jq -r '.services[0].taskDefinition')
+        aws ecs update-service --cluster multi-stage-app --service serve --task-definition task-01-revision5.json
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
     - name: Wait for Rollback to Complete
       run: |
-        aws ecs wait services-stable --cluster production-cluster --services web-service
+        aws ecs wait services-stable --cluster multi-stage-app --services serve
       env:
         AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
         AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
